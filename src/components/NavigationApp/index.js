@@ -6,10 +6,12 @@ const pages = [
   {
     id: 0,
     url: "Home",
+    path: "/home",
   },
   {
     id: 1,
     url: "Perfil",
+    path: "/profile",
   },
 ];
 

@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import { MotionDivBackground, MotionNav, AsideHero } from "./style";
-import { useCycle } from "framer-motion";
 import { useDimensions } from "../../hooks/useDimensions";
 import { MenuToggle } from "../../components/MenuToggleAside/index";
 import { Navigation } from "../../components/NavigationApp/index";
+import { ToggleCurrent } from "../../ContextToggle";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -26,21 +26,23 @@ const sidebar = {
 };
 
 export const AsideMenu = () => {
-  const [isOpen, toggleOpen] = useCycle(false, true);
-  const conatinerRef = useRef(null);
-  const { heigth } = useDimensions(conatinerRef);
+  const { isOpen, OpenNav } = useContext(ToggleCurrent);
+  const containerRef = useRef(null);
+  const { heigth } = useDimensions(containerRef);
+
+  console.log(isOpen);
   return (
     <>
       <AsideHero>
         <MotionNav
-          ref={conatinerRef}
+          ref={containerRef}
           initial={false}
           animate={isOpen ? "open" : "closed"}
           custom={heigth}
         >
           <MotionDivBackground variants={sidebar} />
           <Navigation />
-          <MenuToggle toggle={() => toggleOpen()} />
+          <MenuToggle toggle={() => OpenNav()} />
         </MotionNav>
       </AsideHero>
     </>

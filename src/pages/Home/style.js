@@ -3,13 +3,8 @@ import { motion } from "framer-motion";
 
 export const ContainerHero = styled.div`
   height: 100vh;
-  border: 1px solid;
   display: grid;
-  grid-template-columns: auto 80%;
-`;
-
-export const AsideHero = styled.aside`
-  border: 1px solid;
+  grid-template-columns: ${(props) => props.theme.gridcolumn};
 `;
 
 export const MotionDivBackground = styled(motion.div)`

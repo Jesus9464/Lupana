@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ComponentLi, Icon, Text } from "./style";
+import { ComponentLi, Icon, Text, Link } from "./style";
 import { MdHome, MdAccountBox } from "react-icons/md";
 
 const variants = {
@@ -21,17 +21,19 @@ const variants = {
 
 const icon = [<MdHome />, <MdAccountBox />];
 
-export const MenuItem = ({ url, id }) => {
+export const MenuItem = ({ url, id, path }) => {
   return (
-    <ComponentLi
-      variants={variants}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <Icon>{icon[id]}</Icon>
-      <Text>
-        <h1>{url}</h1>
-      </Text>
-    </ComponentLi>
+    <Link to={path}>
+      <ComponentLi
+        variants={variants}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <Icon>{icon[id]}</Icon>
+        <Text>
+          <h1>{url}</h1>
+        </Text>
+      </ComponentLi>
+    </Link>
   );
 };

@@ -1,15 +1,9 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { Link as RutaUrl } from "react-router-dom";
 
-export const ComponentLi = styled(motion.li)`
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  color: white;
+export const Link = styled(RutaUrl)`
+  text-decoration: none;
 `;
 
 export const Icon = styled.div`
@@ -32,4 +26,19 @@ export const Text = styled.div`
   height: auto;
   flex: 1;
   padding: 5px;
+`;
+
+export const ComponentLi = styled(motion.li)`
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: black;
+
+  &:hover {
+    color: white;
+  }
 `;
