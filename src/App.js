@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { GlobalStyle } from "./style/GlobalStyle";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { Login } from "./pages/Login/index";
+import { Home } from "./pages/Home/Home";
+import Profile from "./pages/User/index";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
+  const { isAuthenticated } = useAuth0();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <Switch>
+        <Route
+          path="/"
+          exact
+          component={() =>
+            isAuthenticated ? <Redirect to="/home" /> : <Login />
+          }
+        />
+        {isAuthenticated ? (
+          <>
+            <Route path="/home" exact component={Home} />
+            <Route path="/profile" exact component={Profile} />
+          </>
+        ) : null}
+      </Switch>
+    </>
   );
 }
 
