@@ -5,6 +5,7 @@ import { Login } from "./pages/Login/index";
 import { Home } from "./pages/Home/Home";
 import Profile from "./pages/User/index";
 import { useAuth0 } from "@auth0/auth0-react";
+import { PageError } from "./pages/PageError/index";
 
 function App() {
   const { isAuthenticated } = useAuth0();
@@ -19,10 +20,12 @@ function App() {
             isAuthenticated ? <Redirect to="/home" /> : <Login />
           }
         />
+        <Route default component={PageError} />
         {isAuthenticated ? (
           <>
             <Route path="/home" exact component={Home} />
             <Route path="/profile" exact component={Profile} />
+            <Route default component={PageError} />
           </>
         ) : null}
       </Switch>
