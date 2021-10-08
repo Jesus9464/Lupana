@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Link as RutaUrl } from "react-router-dom";
-
-export const Link = styled(RutaUrl)`
-  text-decoration: none;
-`;
+import { NavLink as RutaUrl } from "react-router-dom";
 
 export const Icon = styled.div`
   display: flex;
@@ -36,9 +32,14 @@ export const ComponentLi = styled(motion.li)`
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: black;
+  color: white;
 
   &:hover {
-    color: white;
+    color: black;
   }
+`;
+
+export const Link = styled(RutaUrl)`
+  text-decoration: none;
+  color: white;
 `;

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ComponentLi, Icon, Text, Link } from "./style";
 import { MdHome, MdAccountBox } from "react-icons/md";
+import "./style.css";
 
 const variants = {
   open: {
@@ -23,7 +24,7 @@ const icon = [<MdHome />, <MdAccountBox />];
 
 export const MenuItem = ({ url, id, path }) => {
   return (
-    <Link to={path}>
+    <Link exact to={path} activeClassName="active-link">
       <ComponentLi
         variants={variants}
         whileHover={{ scale: 1.1 }}

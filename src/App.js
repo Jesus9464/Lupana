@@ -20,14 +20,14 @@ function App() {
             isAuthenticated ? <Redirect to="/home" /> : <Login />
           }
         />
-        <Route default component={PageError} />
         {isAuthenticated ? (
           <>
             <Route path="/home" exact component={Home} />
             <Route path="/profile" exact component={Profile} />
-            <Route default component={PageError} />
+            <Route component={PageError} />
           </>
         ) : null}
+        <Route component={PageError} />
       </Switch>
     </>
   );
